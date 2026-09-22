@@ -31,7 +31,7 @@ penguins
 nrow(penguins)
 ncol(penguins)
 ```
-  
+
 *   The mean flipper length: `r round(mean(pull(penguins, flipper_length_mm), na.rm = TRUE), 2)`
 
 ## Making a scatter plot 
@@ -50,12 +50,7 @@ ggsave("scatterplot_1.png", plot = scatterplot_1)
 
 # Problem 2 
 
-Creating a data frame comprised of:
-
-a random sample of size 10 from a standard Normal distribution
-a logical vector indicating whether elements of the sample are greater than 0
-a character vector of length 10
-a factor vector of length 10, with 3 different factor “levels” 
+## Creating the specified data frame 
 
 ```{r}
 problem_2_df = 
@@ -68,4 +63,18 @@ problem_2_df =
 
 problem_2_df
 ```
+
+## Trying to take the mean of each variable in the dataframe 
+
+* Mean of random sample: `r round(mean(pull(problem_2_df, rand_sampl)), 2)`
+
+* Mean of logical vector: `r round(mean(pull(problem_2_df, log_vec)), 2)`
+
+* Mean of character vector: `r round(mean(pull(problem_2_df, char_vec)), 2)`
+
+* Mean of factor vector: `r round(mean(pull(problem_2_df, fact_vec)), 2)`
+
+Using the code above to take the mean of each variable in my problem_2_df, it seems like the 
+mean for the random sample and the logical vector did work, while the mean for the character vector and the factor vector did not work. I think that is becuase they are currently formatted as character variables and not numeric variables, so the means cannot be taken. 
+
 
