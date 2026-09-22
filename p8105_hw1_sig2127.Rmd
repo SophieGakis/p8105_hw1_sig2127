@@ -31,4 +31,17 @@ ncol(penguins)
   
 *   The mean flipper length: `r round(mean(pull(penguins, flipper_length_mm), na.rm = TRUE), 2)`
 
+# Making a scatter plot 
+
+```{r}
+scatterplot_1 = ggplot(penguins, aes(x=bill_length_mm, y=flipper_length_mm, color=species)) + geom_point() 
+
+scatterplot_1
+```
+# Saving the scatterplot 
+
+```{r}
+ggsave("scatterplot_1.png", plot = scatterplot_1)
+```
+
 
