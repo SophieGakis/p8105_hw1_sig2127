@@ -77,4 +77,26 @@ problem_2_df
 Using the code above to take the mean of each variable in my problem_2_df, it seems like the 
 mean for the random sample and the logical vector did work, while the mean for the character vector and the factor vector did not work. I think that is becuase they are currently formatted as character variables and not numeric variables, so the means cannot be taken. 
 
+## Converting variables from one type to another 
+
+Adding in a code chunk that applies the as.numeric function to the logical, character, and factor variables
+
+```{r, eval = FALSE}
+problem_2_df_num = 
+  mutate(problem_2_df,
+  log_vec_num = as.numeric(log_vec),
+  char_vec_num = as.numeric(char_vec),
+  fact_vec_num = as.numeric(fact_vec)
+)
+
+problem_2_df_num
+```
+
+When doing this, the logical vector and factor vector are able to be transformed into numerical values. This is because the logical vector originally had values of "true" and "false" which seem to be translated into 1 and 0 respectively. The factor vector had the three levels which then transform into 1, 2, and 3 numerically. The character vector is not able to be transformed since it is originally just letters a-j, which do not translate as easily into numerical values This results in them coming up as NA after the transformation. 
+
+This does help explain what happens when you try to take the mean, as it shows that a mean can only be taken for a numeric variable, not a character variable. 
+
+Included eval = FALSE at the top of the chunk to ensure the chunk shows but not the output. 
+
+
 
