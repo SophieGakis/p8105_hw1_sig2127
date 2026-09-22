@@ -1,14 +1,17 @@
 ---
-title: "p8105_hw1_sig2127.Rmd"
+title: "P8105 HW1 - Sophie Gakis (sig2127)"
 output: github_document
 date: "2026-09-22"
 ---
+# Problem 1 
 
-# After downloading the package that contains the penguins dataset, this will load it 
+## After downloading the package that contains the penguins dataset (done once in the console), this will load it. Also loading the tidyverse library at the top of the document here. 
 
-```{r load_librarys, message = F}
+```{r}
 library (tidyverse)
 data("penguins", package = "palmerpenguins")
+
+penguins
 ```
 
 ## The penguins dataset description 
@@ -31,14 +34,15 @@ ncol(penguins)
   
 *   The mean flipper length: `r round(mean(pull(penguins, flipper_length_mm), na.rm = TRUE), 2)`
 
-# Making a scatter plot 
+## Making a scatter plot 
 
 ```{r}
 scatterplot_1 = ggplot(penguins, aes(x=bill_length_mm, y=flipper_length_mm, color=species)) + geom_point() 
 
 scatterplot_1
 ```
-# Saving the scatterplot 
+
+## Saving the scatterplot 
 
 ```{r}
 ggsave("scatterplot_1.png", plot = scatterplot_1)
