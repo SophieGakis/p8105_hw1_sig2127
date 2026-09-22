@@ -1,29 +1,34 @@
 ---
 title: "p8105_hw1_sig2127.Rmd"
-output: html_document
+output: github_document
 date: "2026-09-22"
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+# After downloading the package that contains the penguins dataset, this will load it 
+
+```{r load_librarys, message = F}
+library (tidyverse)
+data("penguins", package = "palmerpenguins")
 ```
 
-## R Markdown
+## The penguins dataset description 
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+*   Data in the dataset
+    * Species (Adelie, Chinstrap, or Gentoo)
+    * Island (Biscoe, Dream, or Torgersen)
+    * Bill length in mm (Range from 32.1 to 59.6 mm)
+    * Bill Dept in mm (Range from 13.1 to 21.5 mm)
+    * Flipper length in mm (Range from 172 to 231)
+    * Body mass in g (Range from 2,700, 6,300)
+    * Sex (Male or Female)
+    * Year (2007 to 2009)
+    
+*   Size of the dataset
+```{r}
+nrow(penguins)
+ncol(penguins)
 ```
+  
+*   The mean flipper length: `r round(mean(pull(penguins, flipper_length_mm), na.rm = TRUE), 2)`
 
-## Including Plots
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
