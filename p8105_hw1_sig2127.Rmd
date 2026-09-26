@@ -5,7 +5,7 @@ date: "2026-09-22"
 ---
 # Problem 1 
 
-After downloading the package that contains the penguins dataset (done once in the console), this will load it. Also loading the tidyverse library at the top of the document here. 
+After installing the package that contains the penguins dataset (done once in the console), this will load it. Also loading the tidyverse library at the top of the document here. 
 
 ```{r}
 library (tidyverse)
@@ -16,7 +16,7 @@ penguins
 
 ## The penguins dataset description 
 
-*   Data in the dataset
+*   Data in the dataset (Variables and values)
     * Species (Adelie, Chinstrap, or Gentoo)
     * Island (Biscoe, Dream, or Torgersen)
     * Bill length in mm (Range from 32.1 to 59.6 mm)
@@ -32,7 +32,15 @@ nrow(penguins)
 ncol(penguins)
 ```
 
-*   The mean flipper length: `r round(mean(pull(penguins, flipper_length_mm), na.rm = TRUE), 2)`
+Using `drop_na` command to drop any NA values for the flipper length variable so that the Mean can be taken. 
+
+```{r}
+penguins = drop_na(penguins, flipper_length_mm)
+
+penguins
+```
+
+*   The mean flipper length: `r round(mean(pull(penguins, flipper_length_mm)), 2)`
 
 ## Making a scatter plot 
 
@@ -75,7 +83,7 @@ problem_2_df
 * Mean of factor vector: `r round(mean(pull(problem_2_df, fact_vec)), 2)`
 
 Using the code above to take the mean of each variable in my problem_2_df, it seems like the 
-mean for the random sample and the logical vector did work, while the mean for the character vector and the factor vector did not work. I think that is becuase they are currently formatted as character variables and not numeric variables, so the means cannot be taken. 
+mean for the random sample and the logical vector did work, while the mean for the character vector and the factor vector did not work. I think that is because these two variables are currently formatted as character variables and not numeric variables, so their means cannot be taken. 
 
 ## Converting variables from one type to another 
 
@@ -92,11 +100,11 @@ problem_2_df_num =
 problem_2_df_num
 ```
 
-When doing this, the logical vector and factor vector are able to be transformed into numerical values. This is because the logical vector originally had values of "true" and "false" which seem to be translated into 1 and 0 respectively. The factor vector had the three levels which then transform into 1, 2, and 3 numerically. The character vector is not able to be transformed since it is originally just letters a-j, which do not translate as easily into numerical values This results in them coming up as NA after the transformation. 
+By doing this, the logical vector and factor vector are able to be transformed into numerical values. This is because the logical vector originally had values of "true" and "false" which seem to be translated into 1 and 0 respectively. The factor vector had the three levels which then transform into 1, 2, and 3 numerically. The character vector is not able to be transformed since it is originally just letters a-j, which do not translate as easily into numerical values. This results in them coming up as NA after the transformation. 
 
 This does help explain what happens when you try to take the mean, as it shows that a mean can only be taken for a numeric variable, not a character variable. 
 
-Included eval = FALSE at the top of the chunk to ensure the chunk shows but not the output. 
+I also Included eval = FALSE at the top of this chunk to ensure the chunk shows but not the output. 
 
 
 
